@@ -44,7 +44,7 @@
     <div id="P2">
         <h3>Print the first planet object</h3>
         <script>
-            var answer = "please complete";
+            var answer = planets[0];
             report("#P2", answer)
             //will need to look at the console to confirm for array objects.
         </script>
@@ -55,8 +55,13 @@
     <div id="P3">
         <h3>Create an array of planet's names</h3>
         <script>
-            var answer = "please complete";
-            report("#P3", answer)
+          var getName= function(planet) 
+          {
+              return planet.name 
+          }
+          var names=planets.map(getName);
+    
+            report("#P3", names)
         </script>
     </div>
 
@@ -66,16 +71,24 @@
     <div id="P4">
         <h3>Create an array of planet's distance from sun</h3>
         <script>
-            var answer = "please complete";
-            report("#P4", answer)
+            var getDistance= function (planet)
+            {
+                return planet.distance
+            }
+            var distance=planets.map(getDistance)
+            report("#P4", distance)
         </script>
     </div>
 
     <div id="P5">
         <h3>Create an array of planet's number of moons</h3>
         <script>
-            var answer = "please complete";
-            report("#P5", answer)
+            var getMoons = function(planet)
+            {
+                return planet.moons
+            }
+            var moons=planets.map(getMoons);
+            report("#P5", moons)
         </script>
     </div>
 
@@ -83,8 +96,12 @@
     <div id="P6">
         <h3>Create an array of planet's density</h3>
         <script>
-            var answer = "please complete";
-            report("#P6", answer)
+            var getDensity= function(planet)
+            {
+                return planet.density
+            }
+            var density=planets.map(getDensity);
+            report("#P6", density)
         </script>
     </div>
 
@@ -92,8 +109,13 @@
     <div id="P7">
         <h3>Report the mean number of planet Moons</h3>
         <script>
-            var answer = "please complete";
-            report("#P7", answer)
+            var getMoons = function(planet)
+            {
+                return planet.moons
+            }
+            var moons=planets.map(getMoons);
+            var meanMoons= d3.mean(moons);
+                report("#P7", meanMoons)
         </script>
     </div>
 
@@ -113,8 +135,13 @@
     <div id="S2">
         <h3>Create an array with the names of the student images</h3>
         <script>
-            var answer = "please complete";
-            report("#S2", answer)
+            var getPicture =function(student)
+            {
+                return student.picture
+            }
+            var picture=classroom.map(getPicture)
+         ;
+            report("#S2", picture)
         </script>
     </div>
 
@@ -126,7 +153,11 @@
     <div id="S3">
         <h3>Print the grade the first student made on the final</h3>
         <script>
-            var answer = "please complete";
+           var answer= classroom[0]
+           .final[0]
+           .grade
+           ;
+            
             report("#S3", answer)
         </script>
     </div>
@@ -136,8 +167,12 @@
     <div id="S4">
         <h3>Create an array of all the student grades on the final</h3>
         <script>
-            var answer = "please complete";
-            report("#S4", answer)
+            var getGrades=function(student)
+            {
+                return student.final[0].grade
+            };
+            var grades= classroom.map(getGrades);
+            report("#S4", grades)
         </script>
     </div>
 
@@ -163,8 +198,13 @@
     <div id="A2a">
         <h3>Report the array of all quiz grades for the first penguin.</h3>
         <script>
-            var answer = "please complete";
-            report("#A2a", answer)
+            var quizzes= classroom[0].quizes
+            var getQuizgrade = function(quizzes)
+            {
+                return quizzes.grade 
+            }
+            var grade=quizzes.map(getQuizgrade)
+            report("#A2a", grade)
         </script>
     </div>
 
@@ -173,32 +213,49 @@
     <div id="A2">
         <h3>Find the mean of the quiz grades for the first penguin.</h3>
         <script>
-            var answer = "please complete";
-            report("#A2", answer)
+            var quizzes=classroom[0].quizes
+            var getQuizgrade = function(quizzes)
+            {
+                return quizzes.grade
+            }
+            var grade=quizzes.map(getQuizgrade)
+            var meangrade= d3.mean(grade)
+            report("#A2", meangrade)
         </script>
     </div>
 
     <div id="A3">
         <h3>Create a function to find the mean of the quiz grades for a given penguin.</h3>
         <script>
-            var answer = "please complete";
-            report("#A3", answer)
+           var quizmean= function(penguin)
+           {    var getQuizes = function(quiz)
+                    {
+                    return quiz.grade
+                    }
+                var grades= penguin.quizes.map(getQuizes)
+                return d3.mean(grades)
+              
+           }
+        
+            report("#A3", quizmean(classroom[0]))
         </script>
     </div>
 
     <div id="A4">
         <h3>Create an array of the mean quiz score of each penguins. Use one line of "code"</h3>
         <script>
-            var answer = "please complete";
-            report("#A4", answer)
+            var quizesmean=classroom.map(quizmean)
+            report("#A4", quizesmean )
         </script>
     </div>
 
     <div id="A5">
         <h3>Find the mean of all the quiz scores of the class. (one number)</h3>
         <script>
-            var answer = "please complete";
-            report("#A5", answer)
+            
+        var classmean = d3.mean(quizesmean)
+         
+            report("#A5", classmean)
         </script>
     </div>
 
